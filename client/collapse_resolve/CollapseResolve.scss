@@ -1,0 +1,39 @@
+.collapseResolve {
+  &__intro-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__border {
+    display: flex;
+    width: 970;
+    height: 250px;
+  }
+
+  &__button {
+    z-index: 1;
+    transform: translate(-3px, 1px);
+    height: 248px;
+  }
+}
+
+.imageResolve {
+  &__container {
+    width: 882px;
+    height: 248px;
+    position: relative;
+  }
+
+  &__bg {
+    transform: translate(1px, 1px);
+    width: 879px;
+    height: 248px;
+    z-index: -1;
+  }
+
+  &__tt {
+    position: absolute;
+    bottom: -250px;
+    left: 0px;
+  }
+}

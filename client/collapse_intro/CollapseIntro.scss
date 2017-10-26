@@ -1,0 +1,36 @@
+.collapsed {
+  &__intro-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__border {
+    display: flex;
+    width: 970;
+    height: 250px;
+  }
+
+  &__button {
+    z-index: 1;
+    transform: translate(-3px, 1px);
+    height: 248px;
+  }
+}
+
+.video {
+  &__container {
+    display: flex;
+    width: 882px;
+    height: 248px;
+    flex-direction: column;
+  }
+
+  &__player {
+    transform: translate(1px, 1px);
+  }
+
+  &__click-audio {
+    align-self: center;
+    transform: translate(0, -40px);
+  }
+}
