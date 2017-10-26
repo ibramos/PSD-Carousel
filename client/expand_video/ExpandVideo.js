@@ -17,6 +17,12 @@ import pause from './assets/video_pause.png';
 import pauseOver from './assets/video_pause_over.png';
 import play from './assets/video_play.png';
 import playOver from './assets/video_play_over.png';
+
+import mute from './assets/video_mute.png';
+import muteOver from './assets/video_mute_over.png';
+import unmute from './assets/video_icon_unmute.png';
+import unmuteOver from './assets/video_icon_unmute_over.png';
+
 import './ExpandVideo.scss';
 
 export default class ExpandVideo extends Component {
@@ -25,6 +31,7 @@ export default class ExpandVideo extends Component {
     this.state = {
       statusCloseButton: closeButton,
       statusPlayPause: pause,
+      statusMuteUnmute: mute,
       loading: null,
       click: true,
     };
@@ -35,6 +42,9 @@ export default class ExpandVideo extends Component {
     this.onHoverPlayPauseButton = this.onHoverPlayPauseButton.bind(this);
     this.onLeavePlayPauseButton = this.onLeavePlayPauseButton.bind(this);
 
+    this.onHoverMuteUnmuteButton = this.onHoverMuteUnmuteButton.bind(this);
+    this.onLeaveMuteUnmuteButton = this.onLeaveMuteUnmuteButton.bind(this);
+
     this.renderSpinner = this.renderSpinner.bind(this);
     this.renderVideo = this.renderVideo.bind(this);
 
@@ -42,6 +52,8 @@ export default class ExpandVideo extends Component {
     this.renderVideoButtons = this.renderVideoButtons.bind(this);
 
     this.togglePlayPause = this.togglePlayPause.bind(this);
+
+    this.toggleMuteUnmute = this.toggleMuteUnmute.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +89,26 @@ export default class ExpandVideo extends Component {
     }
   }
 
+  onLeaveMuteUnmuteButton() {
+    if (this.state.statusMuteUnmute === muteOver) {
+      this.setState({ statusMuteUnmute: mute });
+    }
+
+    if (this.state.statusMuteUnmute === unmuteOver) {
+      this.setState({ statusMuteUnmute: unmute });
+    }
+  }
+
+  onHoverMuteUnmuteButton() {
+    if (this.state.statusMuteUnmute === mute) {
+      this.setState({ statusMuteUnmute: muteOver });
+    }
+
+    if (this.state.statusMuteUnmute === unmute) {
+      this.setState({ statusMuteUnmute: unmuteOver });
+    }
+  }
+
   togglePlayPause() {
     const video = this.videoPlayer;
     if (video.paused || video.ended) {
@@ -85,6 +117,17 @@ export default class ExpandVideo extends Component {
     } else {
       this.setState({ statusPlayPause: play });
       video.pause();
+    }
+  }
+
+  toggleMuteUnmute() {
+    const video = this.videoPlayer;
+    if (video.muted) {
+      this.setState({ statusMuteUnmute: mute });
+      video.muted = !video.muted;
+    } else {
+      this.setState({ statusMuteUnmute: unmute });
+      video.muted = !video.muted;
     }
   }
 
@@ -129,11 +172,7 @@ export default class ExpandVideo extends Component {
       }
       return (
         <div>
-          <img
-            src={videoTT}
-            alt="watch_video"
-            className="expandVideo__video-tt"
-          />
+          <img src={videoTT} alt="video_tt" className="expandVideo__video-tt" />
           <Link to="/collapse_resolve">
             <img
               src={this.state.statusCloseButton}
@@ -145,12 +184,19 @@ export default class ExpandVideo extends Component {
           </Link>
           <img
             src={this.state.statusPlayPause}
-            alt="watch"
-            className="expandVideo__play"
-            ref={el => (this.playPause = el)}
+            alt="play_pause_button"
+            className="expandVideo__playPause"
             onMouseOver={this.onHoverPlayPauseButton}
             onMouseLeave={this.onLeavePlayPauseButton}
             onClick={this.togglePlayPause}
+          />
+          <img
+            src={this.state.statusMuteUnmute}
+            alt="mute_unmute_button"
+            className="expandVideo__muteUnmute"
+            onMouseOver={this.onHoverMuteUnmuteButton}
+            onMouseLeave={this.onLeaveMuteUnmuteButton}
+            onClick={this.toggleMuteUnmute}
           />
         </div>
       );
