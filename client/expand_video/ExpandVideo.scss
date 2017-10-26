@@ -36,4 +36,11 @@
   &__player {
     height: 498px;
   }
+
+  &__play {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 2;
+  }
 }

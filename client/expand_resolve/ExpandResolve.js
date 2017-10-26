@@ -17,9 +17,9 @@ import leftButton from './assets/slideshow_left.png';
 import leftButtonHovered from './assets/slideshow_left_over.png';
 import rightButton from './assets/slideshow_right.png';
 import rightButtonHovered from './assets/slideshow_right_over.png';
-import slide1 from './slides/slideshow_1.jpg';
-import slide2 from './slides/slideshow_2.jpg';
-import slide3 from './slides/slideshow_3.jpg';
+import slide1 from './assets/slideshow_1.jpg';
+import slide2 from './assets/slideshow_2.jpg';
+import slide3 from './assets/slideshow_3.jpg';
 import './ExpandResolve.scss';
 
 export default class ExpandResolve extends Component {
