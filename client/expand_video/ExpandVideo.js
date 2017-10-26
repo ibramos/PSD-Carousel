@@ -1,5 +1,6 @@
 /* eslint jsx-a11y/media-has-caption: 0 */
 /* eslint jsx-a11y/mouse-events-have-key-events: 0 */
+/* eslint react/prop-types: 0 */
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -40,6 +41,7 @@ export default class ExpandVideo extends Component {
 
   removeVideoButtons() {
     this.setState({ click: false });
+    this.props.history.push('/expand_resolve');
   }
 
   renderSpinner() {

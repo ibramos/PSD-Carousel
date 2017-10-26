@@ -1,0 +1,68 @@
+.expandR {
+  &__container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 968px;
+    background: black;
+  }
+
+  &__border {
+    display: flex;
+    width: 970px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.expandResolve {
+  &__bg {
+    display: flex;
+    width: 968px;
+    height: 498px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  &__replay {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    z-index: 2;
+  }
+
+  &__close-button {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 2;
+  }
+
+  &__left-button {
+    position: absolute;
+    left: 20px;
+    bottom: 250px;
+    z-index: 2;
+  }
+
+  &__right-button {
+    position: absolute;
+    right: 20px;
+    bottom: 250px;
+    z-index: 2;
+  }
+  &__resolve-tt {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+  }
+
+  &__learn-button {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: 2;
+  }
+}
