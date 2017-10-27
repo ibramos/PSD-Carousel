@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "api": "json-server --watch db.json --port 3000",
     "start": "webpack-dev-server --progress --colors --hot --inline",
     "start:dev":
       "webpack-dev-server --config ./webpack.dev.config.js  --progress --colors",
