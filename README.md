@@ -1,5 +1,5 @@
 # PSD-Carousel
-Transformation of a designed PSD to an interactive application.
+Transformation of a custom PSD to an interactive application.
 
 ## Setup
 1. Run npm install or yarn
