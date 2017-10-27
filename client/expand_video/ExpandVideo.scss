@@ -39,15 +39,31 @@
 
   &__playPause {
     position: absolute;
-    left: 0px;
-    bottom: 0px;
+    left: 163px;
+    bottom: 6px;
     z-index: 2;
   }
 
   &__muteUnmute {
     position: absolute;
+    right: 178px;
+    bottom: 6px;
+    z-index: 2;
+  }
+
+  &__progress-bg {
+    position: absolute;
     right: 0px;
     bottom: 0px;
+    z-index: 1;
+  }
+
+  &__progress-fg {
+    position: absolute;
+    left: 191px;
+    bottom: 20px;
+    height: 10px;
+    width: 575px;
     z-index: 2;
   }
 }

@@ -30,7 +30,7 @@ export default class ExpandResolve extends Component {
       statusLeftButton: leftButton,
       statusRightButton: rightButton,
       statusLearnButton: learnButton,
-      slideCounter: 1,
+      slideCounter: 2,
       statusSlide: slide1,
     };
 

@@ -17,11 +17,12 @@ import pause from './assets/video_pause.png';
 import pauseOver from './assets/video_pause_over.png';
 import play from './assets/video_play.png';
 import playOver from './assets/video_play_over.png';
-
 import mute from './assets/video_mute.png';
 import muteOver from './assets/video_mute_over.png';
 import unmute from './assets/video_icon_unmute.png';
 import unmuteOver from './assets/video_icon_unmute_over.png';
+import progressBG from './assets/video_progress_bg.png';
+import progressFG from './assets/video_progress_fg.png';
 
 import './ExpandVideo.scss';
 
@@ -34,6 +35,7 @@ export default class ExpandVideo extends Component {
       statusMuteUnmute: mute,
       loading: null,
       click: true,
+      width: '0%',
     };
 
     this.onHoverCloseButton = this.onHoverCloseButton.bind(this);
@@ -52,8 +54,9 @@ export default class ExpandVideo extends Component {
     this.renderVideoButtons = this.renderVideoButtons.bind(this);
 
     this.togglePlayPause = this.togglePlayPause.bind(this);
-
     this.toggleMuteUnmute = this.toggleMuteUnmute.bind(this);
+
+    this.updateProgress = this.updateProgress.bind(this);
   }
 
   componentDidMount() {
@@ -136,6 +139,17 @@ export default class ExpandVideo extends Component {
     this.props.history.push('/expand_resolve');
   }
 
+  updateProgress() {
+    const video = this.videoPlayer;
+
+    let value = 0;
+    if (video.currentTime > 0) {
+      value = Math.floor(100 / video.duration * video.currentTime);
+    }
+
+    this.setState({ width: `${value}%` });
+  }
+
   renderSpinner() {
     this.setState({ loading: true });
   }
@@ -154,22 +168,6 @@ export default class ExpandVideo extends Component {
 
   renderVideoButtons() {
     if (this.state.click) {
-      if (this.state.loading) {
-        return (
-          <div>
-            <img
-              src={preloader}
-              alt="watch_video"
-              className="expandVideo__video-tt"
-            />;
-            <img
-              src={preloader}
-              alt="close_video"
-              className="expandVideo__close-button"
-            />;
-          </div>
-        );
-      }
       return (
         <div>
           <img src={videoTT} alt="video_tt" className="expandVideo__video-tt" />
@@ -198,6 +196,18 @@ export default class ExpandVideo extends Component {
             onMouseLeave={this.onLeaveMuteUnmuteButton}
             onClick={this.toggleMuteUnmute}
           />
+          <img
+            src={progressBG}
+            alt="progressbg"
+            className="expandVideo__progress-bg"
+          />
+          <div className="expandVideo__progress-fg">
+            <img
+              src={progressFG}
+              alt="progressfg"
+              style={{ width: this.state.width, height: '100%' }}
+            />
+          </div>
         </div>
       );
     }
@@ -223,6 +233,7 @@ export default class ExpandVideo extends Component {
             onLoadStart={this.renderSpinner}
             onPlay={this.renderVideo}
             onEnded={this.removeVideoButtons}
+            onTimeUpdate={this.updateProgress}
             className="expandVideo__player"
             autoPlay
             controls
